@@ -1,24 +1,19 @@
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import NftList from "./components/NftList";
 import Popup from "./components/Popup";
-
-import profile from "./assets/profile/profile.png"
-import figure from "./assets/connect-wallet/figure.png"
-import Loyalty from "./pages/Loyalty";
 import Admin from "./pages/Admin";
-import TopPanel from "./components/TopPanel";
-
-
-
+import {Routes,Route} from "react-router-dom";
+import Loyalty from "./pages/Loyalty";
 
 function App() {
   return (
     <div className="wrapper">
         <Header />
-        <Admin />
+        <Routes>
+            <Route path="/" element={<Loyalty />} />
+            <Route path="/admin" element={<Admin />} />
+        </Routes>
         <Footer/>
-        <Popup />
     </div>
   );
 }

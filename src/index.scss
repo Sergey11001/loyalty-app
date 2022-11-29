@@ -7,10 +7,18 @@ $black:#000000;
 $blue:#2890C6;
 $green:#95D828;
 $pink:#FF728E;
+.no-scroll{
+  overflow: auto;
+  @media (max-width: 828px) {
+    overflow: hidden;
+  }
+}
 
 .wrapper{
   font-family: 'Syne', sans-serif;
 }
+
+
 
 .main--container{
   max-width: 1712px;
@@ -39,10 +47,15 @@ $pink:#FF728E;
 //Header===================
 .header{
   margin-bottom: 50px;
+  position: relative;
+  z-index: 5;
   &--container{
     display: flex;
     align-items: center;
     padding-top: 37px;
+    @media (max-width: 828px){
+      padding-top: 23px;
+    }
   }
   &--logo{
     flex: 0 0 50px;
@@ -57,14 +70,86 @@ $pink:#FF728E;
   &--name{
     font-weight: 700;
     font-size: 25px;
-    margin-right: 91px;
+    @media (max-width: 450px) {
+      font-size: 18px;
+    }
+  }
+  &--menu__burger{
+    display: none;
+    margin-left: auto;
+    @media (max-width: 828px) {
+      display: block;
+      cursor: pointer;
+      flex: 0 0 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 1px solid $lightgrey;
+      position: relative;
+      &:after, span{
+        content: "";
+        position: absolute;
+        height: 2px;
+        background: #ABABAB;
+        transition: all 0.2s ease;
+      }
+      &:after{
+        width: 29px;
+        top: 36%;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      span{
+        width: 17px;
+        top: 50%;
+        left: 10px;
+      }
+      &_active{
+        &:after{
+          width: 29px;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%,-50%) rotate(45deg);
+        }
+        span{
+          width: 29px;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%,-50%) rotate(-45deg);
+        }
+      }
+    }
   }
   &--menu{
     font-weight: 600;
     font-size: 20px;
+    margin-left: 92px;
+    @media (max-width: 828px) {
+      overflow: auto;
+      margin-left: 0;
+      max-width: 100%;
+      transition: all 0.2s ease;
+      position: fixed;
+      top: 80px;
+      left: -100%;
+      right: 0;
+      bottom: 0;
+      z-index: 100;
+      background: #FFFFFF;
+      padding-top: 44px;
+      &_active{
+        left: 0;
+      }
+    }
     &__list{
       display: flex;
       align-items: center;
+      @media (max-width: 828px){
+        flex-direction: column;
+        align-items: start;
+        padding: 0 30px;
+        margin: 0 auto;
+        max-width: 636px;
+      }
     }
     &__item{
       color: #858585;
@@ -72,8 +157,19 @@ $pink:#FF728E;
       &:last-child{
         margin-right: 0;
       }
+      @media (max-width: 828px){
+        color: #000000;
+        padding: 23px 0 25px;
+        border-bottom: 2px solid $lightgrey;
+        font-size: 32px;
+        margin-right: 0;
+        width: 100%;
+        &:first-child{
+          border-top: 2px solid $lightgrey;
+        }
+      }
     }
-    &__item_active{
+    .active{
       color: $pink;
     }
   }
@@ -200,7 +296,7 @@ $pink:#FF728E;
     margin-right: 54px;
     margin-top: -140px;
     flex: 0 0 400px;
-    min-height: 227px;
+    min-height: 600px;
     @media (max-width: 1200px) {
       flex: 0 0 350px;
     }
@@ -218,6 +314,7 @@ $pink:#FF728E;
     }
     @media (max-width: 530px) {
       max-width: 280px;
+      min-height: 450px;
     }
     &--body{
       &__menu{
@@ -383,15 +480,7 @@ $pink:#FF728E;
       @media (max-width: 1052px) {
         margin-top: 20px;
       }
-      @media (max-width: 828px) {
-        margin-top: 140px;
-      }
-      @media (max-width: 637px) {
-        margin-top: 180px;
-      }
-      @media (max-width: 530px) {
-        margin-top: 40px;
-      }
+
     }
     .search--block{
       display: flex;
@@ -402,14 +491,107 @@ $pink:#FF728E;
       color: #858585;
       margin-bottom: 31px;
       &__sort{
-        display: flex;
         flex: 0 0 328px;
         margin-right: 30px;
+        @media (max-width: 1052px) {
+          flex: 0 0 300px;
+          margin-bottom: -15px;
+        }
+        @media (max-width: 828px) {
+          flex: 0 0 250px;
+          margin-right: 50px;
+          margin-top: 10px;
+          margin-bottom: 0;
+        }
+        @media (max-width: 530px) {
+          flex: 0 0 180px;
+          margin-right: 80px;
+        }
+        .sort--selector{
+          width: 100%;
+          position: relative;
+          &__header{
+            display: none;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+            padding: 11px 20px;
+            border: 1px solid #E1E1E1;
+            border-radius: 10px;
+            @media (max-width: 1052px) {
+              display: flex;
+              margin-bottom: 10px;
+            }
+            @media (max-width: 530px) {
+              font-size: 14px;
+              padding: 10px 18px;
+            }
+            div{
+              font-weight: 500;
+              font-size: 22px;
+              color: #2890C6;
+              margin-right: 10px;
+              @media (max-width: 828px) {
+                font-size: 18px;
+              }
+              @media (max-width: 530px) {
+                font-size: 14px;
+              }
+            }
+            img{
+              width: 9px;
+              height: 5px;
+              object-fit: contain;
+              transition: all 0.3s ease-in-out;
+            }
+            .arrow_opened{
+              transform: rotate(180deg);
+            }
+          }
+          &__body{
+            width: 100%;
+            @media (max-width: 1052px) {
+              position: absolute;
+              z-index: 20;
+              max-height: 0;
+              transition: all 0.3s ease-in-out;
+              overflow: hidden;
+            }
+            &--options{
+              display: flex;
+              @media (max-width: 1054px) {
+                flex-direction: column;
+                border: 1px solid #E1E1E1;
+                border-radius: 10px;
+                font-size: 22px;
+                padding: 11px 20px;
+                color: #858585;
+              }
+              @media (max-width: 828px) {
+                font-size: 18px;
+              }
+              @media (max-width: 530px) {
+                font-size: 14px;
+                padding: 10px 18px;
+              }
+            }
+            &_active{
+              max-height: 150px;
+            }
+          }
+        }
+
         &--low{
           margin-right: 40px;
+          cursor: pointer;
+          @media (max-width: 1052px) {
+            margin-right: 0;
+            margin-bottom: 15px;
+          }
         }
         &--high{
-
+          flex: 1 1 auto;
+          cursor: pointer;
         }
         .active--sort{
           color: $blue;
@@ -422,12 +604,16 @@ $pink:#FF728E;
             width: 40%;
             height: 2px;
             background: $blue;
+            @media (max-width: 1052px) {
+              display: none;
+            }
           }
         }
       }
+
+
       &__search{
         flex: 1 1 auto;
-
       }
       &__input{
         background: #FFFFFF;
@@ -469,7 +655,6 @@ $pink:#FF728E;
       flex: 0 0 calc(33% - 30px);
       margin-right: 30px;
       margin-bottom: 30px;
-
       @media (max-width: 1250px) {
         margin-right: 0;
         flex: 0 0 47%;
@@ -477,6 +662,11 @@ $pink:#FF728E;
       @media (max-width: 828px) {
         flex: 0 0 100%;
         max-width: 390px;
+      }
+      &--body{
+        height: 100%;
+        display: flex;
+        flex-direction: column;
       }
 
       &--img{
@@ -513,6 +703,9 @@ $pink:#FF728E;
         border-bottom-right-radius: 16px;
         margin-top: -25px;
         z-index: -1;
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
       }
       .list__item--price{
         font-weight: 700;
@@ -524,9 +717,11 @@ $pink:#FF728E;
         font-size: 18px;
         color: $darkgrey;
         margin-bottom: 17px;
+        flex: 1 1 auto;
       }
       .list__item--btn{
         display: inline-block;
+        width: 91px;
         padding: 11px 28px 17px;
         border: 1px solid #9D9D9D;
         border-radius: 10px;
@@ -545,6 +740,17 @@ $pink:#FF728E;
 //Footer===================
 .footer{
   border-top: 1px solid $lightgrey;
+  &--dropdown{
+    display: none;
+    border-top: none;
+    @media (max-width: 828px) {
+      display: inline-block;
+      width: 100%;
+    }
+    .footer--body__contact{
+      margin-bottom: 180px;
+    }
+  }
   &--body{
     padding-top: 47px;
     padding-bottom: 68px;

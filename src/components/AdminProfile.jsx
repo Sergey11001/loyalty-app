@@ -1,5 +1,4 @@
 import profileAdmin from "../assets/profile/admin.png";
-import profileAdminBg from "../assets/profile/admin_profile_bg.png"
 
 const AdminProfile = () => {
     return (
