@@ -1,7 +1,4 @@
 import TopPanel from "../components/TopPanel";
-import ProfileMenu from "../components/ProfileMenu";
-import ProfileNotMenuChosen from "../ProfileStates/ProfileNotMenuChosen";
-import NftList from "../components/NftList";
 import AdminProfile from "../components/AdminProfile";
 import WhiteListForm from "../components/WhiteListForm";
 

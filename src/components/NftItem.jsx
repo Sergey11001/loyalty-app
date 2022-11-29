@@ -1,6 +1,7 @@
 
 
 const NftItem = ({urlImg, price, title}) => {
+
     return (
         <>
             <div className="nft--list__item--body">

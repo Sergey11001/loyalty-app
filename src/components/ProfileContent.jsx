@@ -1,4 +1,3 @@
-import profile from "../assets/profile/profile.png";
 import ProfilePass from "../ProfileStates/ProfilePass";
 
 

@@ -320,7 +320,7 @@ $pink:#FF728E;
       &__menu{
         display: flex;
         &--item{
-          flex: 0 0 calc(33% - 10px);
+          flex: 1 1 33%;
           font-weight: 600;
           font-size: 18px;
           text-align: center;
@@ -336,9 +336,18 @@ $pink:#FF728E;
           &:last-child{
             margin-right: 0;
           }
+          @media (max-width: 1200px) {
+            padding: 14px 10px 19px;
+            margin-right: 8px;
+          }
+          @media (max-width: 828px) {
+            padding: 14px 23px 19px;
+            margin-right: 16px;
+          }
           @media (max-width: 530px) {
             font-size: 16px;
             padding: 14px 10px 19px;
+            margin-right: 8px;
           }
           &:hover{
             background: rgba(162, 162, 162, 0.34);
@@ -566,6 +575,7 @@ $pink:#FF728E;
                 font-size: 22px;
                 padding: 11px 20px;
                 color: #858585;
+                background: #FFFFFF;
               }
               @media (max-width: 828px) {
                 font-size: 18px;
@@ -580,29 +590,32 @@ $pink:#FF728E;
             }
           }
         }
-
-        &--low{
-          margin-right: 40px;
-          cursor: pointer;
-          @media (max-width: 1052px) {
-            margin-right: 0;
-            margin-bottom: 15px;
-          }
-        }
-        &--high{
+        &--type{
           flex: 1 1 auto;
           cursor: pointer;
-        }
-        .active--sort{
-          color: $blue;
+          transition: all 0.3s ease;
           position: relative;
+          &:first-child{
+            margin-right: 40px;
+            @media (max-width: 1052px) {
+              margin-right: 0;
+              margin-bottom: 15px;
+            }
+          }
           &:before{
             content: "";
+            transition: all 0.3s ease;
             display: block;
             position: absolute;
             bottom: -6px;
-            width: 40%;
+            width: 0;
             height: 2px;
+          }
+        }
+        .active--sort{
+          color: $blue;
+          &:before{
+            width: 40%;
             background: $blue;
             @media (max-width: 1052px) {
               display: none;
@@ -675,6 +688,7 @@ $pink:#FF728E;
         border-radius: 20px;
         overflow: hidden;
         position: relative;
+        z-index: 1;
         @media (max-width: 1400px) {
           height: 250px;
         }
@@ -702,10 +716,11 @@ $pink:#FF728E;
         border-bottom-left-radius: 16px;
         border-bottom-right-radius: 16px;
         margin-top: -25px;
-        z-index: -1;
+        z-index: 0;
         flex: 1 1 auto;
         display: flex;
         flex-direction: column;
+        position: relative;
       }
       .list__item--price{
         font-weight: 700;
@@ -720,7 +735,7 @@ $pink:#FF728E;
         flex: 1 1 auto;
       }
       .list__item--btn{
-        display: inline-block;
+        display: block;
         width: 91px;
         padding: 11px 28px 17px;
         border: 1px solid #9D9D9D;
@@ -728,6 +743,7 @@ $pink:#FF728E;
         font-weight: 700;
         font-size: 16px;
         transition: all 0.2s ease;
+        cursor: pointer;
         &:hover{
           background: $green;
           color: #FFFFFF;

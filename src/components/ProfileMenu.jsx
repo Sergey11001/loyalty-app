@@ -1,17 +1,17 @@
 
+const profileMenu = [" My Pass ID", `My \n NFT`, "Listing NFT"]
 
-const ProfileMenu = () => {
+const ProfileMenu = ({activeMenuIndex, setActiveMenuIndex}) => {
+
     return (
         <div className="profile--body__menu">
-            <a href="" className="profile--body__menu--item profile--body__menu--item_active">
-                My Pass ID
-            </a>
-            <a href="" className="profile--body__menu--item">
-                My <br/> NFT
-            </a>
-            <a href="" className="profile--body__menu--item">
-                Listing NFT
-            </a>
+            {
+                profileMenu.map((item,i) => (
+                    <div className={activeMenuIndex===i ? "profile--body__menu--item profile--body__menu--item_active" : "profile--body__menu--item"} onClick={() => setActiveMenuIndex(i)}>
+                        {item}
+                    </div>
+                ))
+            }
         </div>
     )
 }

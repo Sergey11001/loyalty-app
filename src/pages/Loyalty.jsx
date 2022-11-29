@@ -3,6 +3,7 @@ import ProfileMenu from "../components/ProfileMenu";
 import ProfileContent from "../components/ProfileContent";
 import ProfileNotMenuChosen from "../ProfileStates/ProfileNotMenuChosen";
 import TopPanel from "../components/TopPanel";
+import ProfileBlock from "../components/ProfileBlock";
 
 
 const Loyalty = () =>{
@@ -12,14 +13,7 @@ const Loyalty = () =>{
                 <TopPanel />
                 <div className="nft--container main--container">
                     <div className="main--block">
-                        <div className="profile">
-                            <div className="profile--body">
-                                <ProfileMenu />
-                                <div className="profile--body__information">
-                                    <ProfileNotMenuChosen />
-                                </div>
-                            </div>
-                        </div>
+                        <ProfileBlock />
                         <NftList />
                     </div>
                 </div>
