@@ -1,5 +1,5 @@
 
-const profileMenu = [" My Pass ID", `My \n NFT`, "Listing NFT"]
+const profileMenu = [" My Pass ID", `My NFT`, "Listing NFT"]
 
 const ProfileMenu = ({activeMenuIndex, setActiveMenuIndex}) => {
 
