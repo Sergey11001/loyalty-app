@@ -31,7 +31,7 @@ const WhiteListForm = () => {
                                 Add NFT
                             </div>
                             <Input label="Smart-contract NFT" type="text"/>
-                            <Input label="Price NFT" type="number"/>
+                            <Input label="Price NFT" type="text"/>
                         </div>
                         <div className="wl--form__inputs">
                             <div className="inputs--block__title">

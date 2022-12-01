@@ -1,8 +1,8 @@
 
-const Footer = () => {
+const Footer = ({menuDropDown= false}) => {
     return (
-        <footer className="footer">
-            <div className="footer--container main--container">
+        <footer className={menuDropDown ? "footer footer--dropdown" : "footer"}>
+            <div className="main--container">
                 <div className="footer--body">
                     <div className="footer--body__contact">
                         Contact HR

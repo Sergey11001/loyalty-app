@@ -1,6 +1,7 @@
 import logo from "../assets/header/logo.png";
 import {useEffect, useState} from "react";
 import {NavLink} from "react-router-dom";
+import Footer from "./Footer";
 
 const Header = () => {
     const [activeBurger,setActiveBurger] = useState(false)
@@ -34,19 +35,7 @@ const Header = () => {
                             </NavLink>
                         </li>
                     </ul>
-                    <div className="footer--dropdown">
-                        <div className="main--container">
-                            <div className="footer--body">
-                                <div className="footer--body__contact">
-                                    Contact HR
-                                    <a href="#" className="footer--body__contact--link">hr@skyrocket.fund</a>
-                                </div>
-                                <div className="footer--body__copyright">
-                                    Copyright © 2022 Loyalty Program
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <Footer menuDropDown={true} />
                 </nav>
             </div>
         </header>
