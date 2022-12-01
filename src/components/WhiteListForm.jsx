@@ -9,16 +9,15 @@ const WhiteListForm = () => {
                     <div className="wl--form__title">
                         Marketplace loyalty program
                     </div>
-                        {/*<div className="wl--form__buttons">*/}
-                        {/*    <div className="wl--form__btn">*/}
-                        {/*        Enable*/}
-                        {/*    </div>*/}
-                        {/*    <div className="wl--form__btn">*/}
-                        {/*        Disable*/}
-                        {/*    </div>*/}
-                        {/*</div>*/}
-
                     <form action="" className="wl--form__content">
+                        <div className="wl--form__buttons">
+                            <div className="wl--form__btn wl--form__btn_active">
+                                Enable
+                            </div>
+                            <div className="wl--form__btn">
+                                Disable
+                            </div>
+                        </div>
                         <div className="wl--form__inputs">
                             <div className="inputs--block__title">
                                 White list

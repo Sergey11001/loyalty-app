@@ -12,6 +12,7 @@ const Header = () => {
         activeBurger ? document.body.classList.add('no-scroll') :document.body.classList.remove("no-scroll")
     },[activeBurger])
 
+    console.log("dcsdv")
     return(
         <header className="header">
             <div className="header--container main--container">
@@ -27,12 +28,12 @@ const Header = () => {
                 <nav className={activeBurger ? "header--menu header--menu_active" : "header--menu" }>
                     <ul className="header--menu__list">
                         <li className="header--menu__item">
-                            <NavLink to="/admin" className="header--menu__link">
+                            <NavLink to="/admin" className="header--menu__link" onClick={() => setActiveBurger(false)}>
                                 Admin Panel
                             </NavLink>
                         </li>
                         <li className="header--menu__item">
-                            <NavLink to="/" className="header--menu__link">
+                            <NavLink to="/" className="header--menu__link" onClick={() => setActiveBurger(false)}>
                                 Loyalty Program
                             </NavLink>
                         </li>
