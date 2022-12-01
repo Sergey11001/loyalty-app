@@ -13,6 +13,7 @@ const listNft=[
     {name:"NFT Name Legend", imgUrl:picture},
     {name:"NFT Name Legend", imgUrl:picture}
 ]
+
 const ProfileNftCollection = () => {
 
     return(

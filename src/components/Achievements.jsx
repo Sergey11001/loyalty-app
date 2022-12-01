@@ -2,7 +2,6 @@
 import achiv1 from "../assets/achiv/1.png"
 import achiv2 from "../assets/achiv/2.png"
 import achiv3 from "../assets/achiv/3.png"
-
 import arrow from "../assets/arrow_diag.svg"
 
 const Achievements = () => {
@@ -47,7 +46,6 @@ const Achievements = () => {
                                 <img src={achiv2} alt=""/>
                             </div>
                         </li>
-
                     </ul>
                 </div>
             </div>

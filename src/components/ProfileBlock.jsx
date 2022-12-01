@@ -1,10 +1,11 @@
+import {useState} from "react";
+
 import ProfileMenu from "./ProfileMenu";
 import ProfileNotMenuChosen from "../ProfileStates/ProfileNotMenuChosen";
-import {useState} from "react";
 import ProfilePass from "../ProfileStates/ProfilePass";
 import ProfileNftCollection from "../ProfileStates/ProfileNftCollection";
 import Achievements from "./Achievements";
-import ProfileListining from "../ProfileStates/ProfileListining";
+import ProfileListing from "../ProfileStates/ProfileListing";
 
 
 const ProfileBlock = () => {
@@ -33,7 +34,7 @@ const ProfileBlock = () => {
                         </>
                     }
                     {
-                        activeMenuIndex===2 && <ProfileListining />
+                        activeMenuIndex===2 && <ProfileListing />
                     }
                 </div>
             </div>

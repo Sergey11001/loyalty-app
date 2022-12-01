@@ -13,7 +13,7 @@ const listNft=[
     {name:"NFT Name Legend", imgUrl:picture},
     {name:"NFT Name Legend", imgUrl:picture}
 ]
-const ProfileListining = () => {
+const ProfileListing = () => {
     return (
         <>
             <div className="profile--collection">
@@ -26,7 +26,7 @@ const ProfileListining = () => {
                             1856 gem
                         </div>
                     </div>
-                    <ScrollingListNft twoColumns={true} nftListItem={listNft}/>
+                    <ScrollingListNft twoRows={true} nftListItem={listNft}/>
                     <form action="" className="sell--form">
                         <div className="sell--form__inputs">
                             <Input type={"text"} label={"Enter price"} style={{padding:"17px 21px 24px"}}/>
@@ -45,10 +45,10 @@ const ProfileListining = () => {
                     <div className="profile--collection__content--title">
                         Placed on marketplace
                     </div>
-                    <ScrollingListNft delisting={true} twoColumns={true} nftListItem={listNft}></ScrollingListNft>
+                    <ScrollingListNft delisting={true} twoRows={true} nftListItem={listNft}></ScrollingListNft>
                 </div>
             </div>
         </>
     )
 }
-export default ProfileListining
+export default ProfileListing

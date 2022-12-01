@@ -22,6 +22,7 @@ const TopPanel = ({admin}) => {
                         {/*<div className="connect--wallet__connected">*/}
                         {/*    0xFDec540eEd390cx..*/}
                         {/*</div>*/}
+                        {/*Если кошелек законектили */}
                     </div>
                 </div>
             </div>

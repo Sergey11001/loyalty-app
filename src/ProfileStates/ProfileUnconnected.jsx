@@ -1,6 +1,4 @@
 
-
-
 const ProfileUnconnected = () =>{
     return(
         <div className="person__inf--unconnected">

@@ -1,12 +1,13 @@
 import {useEffect, useRef, useState} from "react";
 
 
-const ScrollingListNft = ({twoColumns=false, nftListItem, delisting=false}) => {
+const ScrollingListNft = ({nftListItem, twoRows=false, delisting=false}) => {
     const [scrolledCount,setScrolledCount] = useState(0)
     const refPrev=useRef(null)
     const refNext=useRef(null)
     const refScrollingBody=useRef(null)
     const refScrollingItem=useRef(null)
+
     const scrollingToPrev = () => {
         setScrolledCount(scrolledCount - 1)
     }
@@ -36,7 +37,7 @@ const ScrollingListNft = ({twoColumns=false, nftListItem, delisting=false}) => {
                 </svg>
             </div>
             <div className="collection--visible">
-                <div className={twoColumns ?  "collection--body__scrolling collection--body__scrolling_short" : "collection--body__scrolling"} ref={refScrollingBody}>
+                <div className={twoRows ?  "collection--body__scrolling collection--body__scrolling_short" : "collection--body__scrolling"} ref={refScrollingBody}>
                     {
                         nftListItem.map((item,i)=>(
                             <div className="collection--item" ref={i===0 ? refScrollingItem : null}>

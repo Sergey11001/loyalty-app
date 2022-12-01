@@ -1,7 +1,9 @@
-import logo from "../assets/header/logo.png";
 import {useEffect, useState} from "react";
 import {NavLink} from "react-router-dom";
+
 import Footer from "./Footer";
+
+import logo from "../assets/header/logo.png";
 
 const Header = () => {
     const [activeBurger,setActiveBurger] = useState(false)

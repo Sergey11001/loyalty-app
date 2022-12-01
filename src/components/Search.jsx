@@ -4,7 +4,6 @@ import {useEffect, useState} from "react";
 
 const Search = ({setMainSearch}) => {
     const [searchTerm,setSearchTerm]=useState("")
-
     const inputChange = (e) =>{
         setSearchTerm(e.target.value)
     }
@@ -16,8 +15,12 @@ const Search = ({setMainSearch}) => {
     return (
         <div className="search--block__search">
             <div className="search--block__input">
-                <input value={searchTerm} onChange={(e) => inputChange(e)} type="text" className="search--input" placeholder="Search NFT"/>
-                <img src={search} alt="search" className="search--img"/>
+                <label htmlFor="search">
+                    <div className="search--img">
+                        <img src={search} alt="search"/>
+                    </div>
+                </label>
+                <input id="search" value={searchTerm} onChange={(e) => inputChange(e)} type="text" className="search--input" placeholder="Search NFT"/>
             </div>
         </div>
     )

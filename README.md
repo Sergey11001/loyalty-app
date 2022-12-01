@@ -1,70 +1,66 @@
-# Getting Started with Create React App
+# Components:
+## 1.Achievement:
+### Блок достижений в профиле
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 2.AdminProfile:
+### Большая фотка профиля на странице админа
 
-## Available Scripts
+## 3.Footer:
+### Просто футер. Может принамать параметр menuDropDown. Параметр нужен для использование футера в выпадающем меню (burger menu)
 
-In the project directory, you can run:
+## 4.Header
+### Просто верхушка страницы
 
-### `npm start`
+## 6.NftItem
+### Элемент списка нфтишек. Должны передать в него обЪект с парамертами urlImg, price, title, id?
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 5.NftList
+### Список нфтишек, которые можно купить
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 7.ProfileBlock
+### Общий блок профиля. Содержит в себе Меню и то, что показывается при выборе пункта меню
 
-### `npm test`
+## 8.ProfileMenu
+### Меню профиля
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 9.ScrollingListNft
+### Скроллинг элементов в блоках, которые находятся в основном блоке профиля. Может принимать два необязательных параметра twoRows и delisting. Если передается twoRows, то список получается ограничение по строкам - 2. Когда передается delisting, появляется кнопка Delisting у элементов
 
-### `npm run build`
+## 10.Search 
+### Отслеживает то, что ввел пользователь в input и с задержкой 300мс введенный запрос в компонент NftList
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 11.Sort
+### Пока ничего не делает, только переключет активное выбранную сортировку
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 12.TopPanel
+### Верхняя панель под header. Принимает один необязательный параметр admin. Если передать, то просто меняются украшения вокруг. Изначально содержит кнопку connect wallet. После подключения клошелька меняет ее на его номер. Блок с номером кошелька, который должен заменить кнопку закоменчен в компоненте
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 13.WhiteListForm
+### Форма на странице админа
 
-### `npm run eject`
+## 14.Admin
+### Страница админа
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 15.Loyalty
+### Основная страница
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 16.Input
+### UI компонент ввода. label=placeholder, type=тип вводимых значений
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 17.ProfileNotMenuChosen
+### Блок в основном блоке профиля. Может выводить компоненту  ProfileConnected, если кошелек подключен, но пункт меню не выбран. Может выводить ProfileUnconnected, если кошелек не подключен
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 18.ProfileUnconnected
+### Блок выводится, когда кошелек не подключен
 
-## Learn More
+## 19.ProfileConnected
+### Блок выводится, когда кошелек подключен, но не выбран ни один пункт меню
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 20.ProfileListing
+### Блок профиля. Выводится когда выбран пункт меню Listing NFT
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 21.ProfilePass
+### Блок профиля. Выводится когда выбран пункт меню My Pass Id
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 22.ProfileNftCollection
+### Блок профиля. Выводится когда выбран пункт меню My NFT
