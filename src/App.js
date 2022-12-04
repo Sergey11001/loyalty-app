@@ -1,6 +1,5 @@
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import Popup from "./components/Popup";
 import Admin from "./pages/Admin";
 import {Routes,Route} from "react-router-dom";
 import Loyalty from "./pages/Loyalty";

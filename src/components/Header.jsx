@@ -12,7 +12,6 @@ const Header = () => {
         activeBurger ? document.body.classList.add('no-scroll') :document.body.classList.remove("no-scroll")
     },[activeBurger])
 
-    console.log("dcsdv")
     return(
         <header className="header">
             <div className="header--container main--container">
