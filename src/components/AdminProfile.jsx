@@ -1,4 +1,5 @@
 import profileAdmin from "../assets/profile/admin.png";
+import profileAdminBg from "../assets/profile/admin_profile_bg.png"
 
 const AdminProfile = () => {
     return (
@@ -8,6 +9,9 @@ const AdminProfile = () => {
                     <img src={profileAdmin} alt="" className="admin--profile__img"/>
                     <div className="admin--profile__btn">
                         Big Boss
+                    </div>
+                    <div className="admin--profile__bg">
+                        <img src={profileAdminBg} alt="" className="admin--profile__bg--img"/>
                     </div>
                 </div>
             </div>

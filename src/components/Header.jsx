@@ -24,21 +24,24 @@ const Header = () => {
                 <div className={activeBurger ? "header--menu__burger header--menu__burger_active" : "header--menu__burger"} onClick={() => setActiveBurger(!activeBurger)}>
                     <span></span>
                 </div>
-                <nav className={activeBurger ? "header--menu header--menu_active" : "header--menu" }>
-                    <ul className="header--menu__list">
-                        <li className="header--menu__item">
-                            <NavLink to="/admin" className="header--menu__link" onClick={() => setActiveBurger(false)}>
-                                Admin Panel
-                            </NavLink>
-                        </li>
-                        <li className="header--menu__item">
-                            <NavLink to="/" className="header--menu__link" onClick={() => setActiveBurger(false)}>
-                                Loyalty Program
-                            </NavLink>
-                        </li>
-                    </ul>
-                    <Footer menuDropDown={true} />
-                </nav>
+                <div className={activeBurger ? "header--menu__wrapper header--menu__wrapper_active" : "header--menu__wrapper"}>
+                    <nav className="header--menu">
+                        <ul className="header--menu__list">
+                            <li className="header--menu__item">
+                                <NavLink to="/admin" className="header--menu__link" onClick={() => setActiveBurger(false)}>
+                                    Admin Panel
+                                </NavLink>
+                            </li>
+                            <li className="header--menu__item">
+                                <NavLink to="/" className="header--menu__link" onClick={() => setActiveBurger(false)}>
+                                    Loyalty Program
+                                </NavLink>
+                            </li>
+                        </ul>
+                        <Footer menuDropDown={true} />
+                    </nav>
+                </div>
+
             </div>
         </header>
     )

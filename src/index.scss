@@ -48,7 +48,6 @@ $pink:#FF728E;
 //Header===================
 .header{
   margin-bottom: 50px;
-  position: relative;
   z-index: 5;
   @media (max-width: 828px) {
     margin-bottom: 38px;
@@ -123,26 +122,32 @@ $pink:#FF728E;
       }
     }
   }
-  &--menu{
-    font-weight: 600;
-    font-size: 20px;
+  &--menu__wrapper{
     margin-left: 92px;
     @media (max-width: 828px) {
       overflow: auto;
       margin-left: 0;
       max-width: 100%;
       transition: all 0.2s ease;
-      position: fixed;
-      top: 80px;
+      position: absolute;
+      top: 85px;
       left: -100%;
       right: 0;
       bottom: 0;
+      min-height: 100%;
       z-index: 100;
       background: #FFFFFF;
-      padding-top: 44px;
+      padding-top: 30px;
       &_active{
         left: 0;
       }
+    }
+  }
+  &--menu{
+    font-weight: 600;
+    font-size: 20px;
+    @media (max-width: 828px) {
+      min-height: calc(100% + 30px);
     }
     &__list{
       display: flex;
@@ -839,6 +844,9 @@ $pink:#FF728E;
     .footer--body__contact{
       margin-bottom: 180px;
     }
+    .footer--body{
+      padding-bottom: 30px !important;
+    }
   }
   &--body{
     padding-top: 47px;
@@ -1031,11 +1039,25 @@ $pink:#FF728E;
     height: 100%;
     overflow:hidden;
     border-radius: 20px;
-  }
+}
   &__img{
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+  &__bg{
+    position: absolute;
+    top: 25px;
+    left: -15px;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    scale: 1.15;
+    overflow: hidden;
+    &--img{
+      width: 100%;
+      height:auto;
+    }
   }
   &__btn{
     text-align: center;
@@ -1052,7 +1074,7 @@ $pink:#FF728E;
     background: rgba(255, 255, 255, 0.14);
     backdrop-filter: blur(18.5px);
     border-radius: 20px;
-
+    z-index: 2;
     @media (max-width: 1615px) {
       margin: 0 36px;
       padding: 24px 0 30px;
