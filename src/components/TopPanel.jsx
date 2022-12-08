@@ -1,7 +1,12 @@
 import figure from "../assets/connect-wallet/figure.png";
 import adminBg from "../assets/connect-wallet/admin_bg.png"
+import { useSelector, useDispatch } from 'react-redux';
+import { connectWallet } from "../store/reducer";
 
 const TopPanel = ({admin}) => {
+    const dispatch = useDispatch()
+    const { signerAddr } = useSelector((state) => state.web3)
+
     return (
         <div className="connect--wallet">
             <div className="main--container">
@@ -14,15 +19,18 @@ const TopPanel = ({admin}) => {
                         <div className="connect--wallet__title">
                             Loyalty Program
                         </div>
-
-                        <a href="#" className="connect--wallet__btn">
-                            Connect wallet
-                        </a>
-
-                        {/*<div className="connect--wallet__connected">*/}
-                        {/*    0xFDec540eEd390cx..*/}
-                        {/*</div>*/}
-                        {/*Если кошелек законектили */}
+                        
+                        {
+                            !signerAddr ? (
+                                <button href="#" className="connect--wallet__btn" onClick={() => dispatch(connectWallet())}>
+                                    Connect wallet
+                                </button>
+                            ) : (
+                                <div className="connect--wallet__connected">
+                                    {signerAddr.slice(0, 16)}..
+                                </div>
+                            )
+                        }
                     </div>
                 </div>
             </div>
