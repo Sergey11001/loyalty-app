@@ -1,5 +1,7 @@
 import { createSlice, combineReducers, createAsyncThunk, isPending, isRejected, isFulfilled } from '@reduxjs/toolkit'
 import CoinbaseWalletSDK from "@coinbase/wallet-sdk";
+import storage from 'redux-persist/lib/storage';
+import { persistReducer } from 'redux-persist';
 import WalletConnect from "@walletconnect/web3-provider";
 import Web3Modal from "web3modal";
 import { ethers } from 'ethers';
@@ -9,8 +11,14 @@ const web3State = {
   library: null,
   provider: null,
   signer: null,
-  signerAddr: null
+  signerAddr: null,
+  web3Modal: null
 }
+
+const persistConfig = {
+  key: 'root',
+  storage
+};
 
 export const connectWallet = createAsyncThunk("web3/connect", async () => {
   const providerOptions = {
@@ -30,6 +38,7 @@ export const connectWallet = createAsyncThunk("web3/connect", async () => {
   };
 
   const web3Modal = new Web3Modal({
+    cacheProvider: true,
     providerOptions
   });
 
@@ -39,11 +48,17 @@ export const connectWallet = createAsyncThunk("web3/connect", async () => {
   const signerAddr = await signer.getAddress()
 
   return {
+    web3Modal,
     provider,
     library,
     signer,
     signerAddr
   }
+})
+
+export const disconnectWallet = createAsyncThunk("web3/disconnect", async (_, { getState }) => {
+  let { web3 } = getState();
+  await web3.web3Modal?.clearCachedProvider();
 })
 
 const web3slice = createSlice({
@@ -56,6 +71,15 @@ const web3slice = createSlice({
       state.library = payload.library
       state.signer = payload.signer
       state.signerAddr = payload.signerAddr
+      state.web3Modal = payload.web3Modal;
+    })
+
+    builder.addCase(disconnectWallet.fulfilled, (state) => {
+      state.provider = null
+      state.library = null
+      state.signer = null
+      state.signerAddr = null
+      state.web3Modal = null
     })
 
     builder.addMatcher(isPending, (state) => {
@@ -75,6 +99,9 @@ const web3slice = createSlice({
 
 export const web3reducer = web3slice.reducer;
 
-export const rootReducer = combineReducers({
+const rootReducer = combineReducers({
   web3: web3reducer
 })
+
+export const persistedReducer = persistReducer(persistConfig, rootReducer);
+

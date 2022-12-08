@@ -1,7 +1,7 @@
 import figure from "../assets/connect-wallet/figure.png";
 import adminBg from "../assets/connect-wallet/admin_bg.png"
 import { useSelector, useDispatch } from 'react-redux';
-import { connectWallet } from "../store/reducer";
+import { connectWallet, disconnectWallet } from "../store/reducer";
 
 const TopPanel = ({admin}) => {
     const dispatch = useDispatch()
@@ -26,7 +26,7 @@ const TopPanel = ({admin}) => {
                                     Connect wallet
                                 </button>
                             ) : (
-                                <div className="connect--wallet__connected">
+                                <div className="connect--wallet__connected" onClick={() => dispatch(disconnectWallet())}>
                                     {signerAddr.slice(0, 16)}..
                                 </div>
                             )

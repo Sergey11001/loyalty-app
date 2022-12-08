@@ -272,7 +272,7 @@ $pink:#FF728E;
       padding: 16px 33px 22px;
     }
   }
-  &__connected{
+  &__connected {
     font-weight: 700;
     padding:17px 22px 24px ;
     font-size: 20px;
@@ -280,6 +280,30 @@ $pink:#FF728E;
     background: rgba(255, 255, 255, 0.24);
     backdrop-filter: blur(6.5px);
     border-radius: 12px;
+    position: relative;
+
+    &::before {
+      content: "Disconnect wallet";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      opacity: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 12px;
+      transition: 0.1s;
+    }
+    
+    &:hover {
+      &::before {
+        opacity: 1;
+      }
+    }
+
     @media (max-width: 1300px) {
       margin-bottom: 180px;
     }
