@@ -17,8 +17,8 @@ const nftListItems = [
 
 
 const NftList = () => {
-    const [mainSearch,setMainSearch]=useState("")
-    const [sortActiveIndex,setSortActiveIndex] = useState(0);
+    const [mainSearch, setMainSearch]=useState("")
+    const [sortActiveIndex, setSortActiveIndex] = useState(0);
 
     return (
         <div className="nft--list">

@@ -1,12 +1,14 @@
 import {useEffect, useState} from "react";
 import {NavLink} from "react-router-dom";
-
 import Footer from "./Footer";
-
 import logo from "../assets/header/logo.png";
+import { useDispatch, useSelector } from "react-redux";
+import { connectWallet, disconnectWallet } from "../store/reducer";
 
 const Header = () => {
     const [activeBurger,setActiveBurger] = useState(false)
+    const dispatch = useDispatch()
+    const { signerAddr } = useSelector((state) => state.web3)
 
     useEffect(()=>{
         activeBurger ? document.body.classList.add('no-scroll') :document.body.classList.remove("no-scroll")
@@ -41,7 +43,17 @@ const Header = () => {
                         <Footer menuDropDown={true} />
                     </nav>
                 </div>
-
+                {
+                    !signerAddr ? (
+                        <button href="#" className="header__btn" onClick={() => dispatch(connectWallet())}>
+                            Connect wallet
+                        </button>
+                    ) : (
+                        <div className="header__connected" onClick={() => dispatch(disconnectWallet())}>
+                            {signerAddr.slice(0, 16)}..
+                        </div>
+                    )
+                }
             </div>
         </header>
     )

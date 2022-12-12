@@ -23,7 +23,7 @@ const ProfileListing = () => {
                             Balance
                         </div>
                         <div className="profile--collection__top--amount">
-                            1856 gem
+                            1856 sky
                         </div>
                     </div>
                     <ScrollingListNft twoRows={true} nftListItem={listNft}/>

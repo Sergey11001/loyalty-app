@@ -34,7 +34,7 @@ const ProfilePass = () => {
                                     Balance
                                 </div>
                                 <div className="data--content data--content_pink">
-                                    1856 <br/> gem
+                                    1856 <br/> sky
                                 </div>
                             </div>
                         </div>

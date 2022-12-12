@@ -182,6 +182,71 @@ $pink:#FF728E;
       color: $pink;
     }
   }
+
+  &__btn {
+    display: inline-block;
+    font-weight: 700;
+    font-size: 20px;
+    color: #FFFFFF;
+    padding: 17px 47px 24px;
+    background: #95D828;
+    backdrop-filter: blur(6.5px);
+    border-radius: 12px;
+    transition: all 0.2s ease;
+    margin-left: auto;
+
+    &:hover{
+      color: #83C814;
+      background: #E6FFBE;
+    }
+    @media (max-width: 400px) {
+      padding: 16px 33px 22px;
+    }
+  }
+
+  &__connected {
+    font-weight: 700;
+    padding:17px 22px 24px ;
+    font-size: 20px;
+    color: #FFFFFF;
+    background: rgba(255, 255, 255, 0.24);
+    backdrop-filter: blur(6.5px);
+    border-radius: 12px;
+    position: relative;
+    margin-left: auto;
+
+    &::before {
+      content: "Disconnect";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      opacity: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 12px;
+      transition: 0.1s;
+    }
+    
+    &:hover {
+      &::before {
+        opacity: 1;
+      }
+    }
+
+    @media (max-width: 1300px) {
+      margin-bottom: 180px;
+    }
+    @media (max-width: 500px) {
+      font-size: 18px;
+    }
+    @media (max-width: 455px) {
+      font-size: 16px;
+    }
+  }
 }
 
 
@@ -254,67 +319,6 @@ $pink:#FF728E;
     }
 
   }
-  &__btn{
-    display: inline-block;
-    font-weight: 700;
-    font-size: 20px;
-    color: #FFFFFF;
-    padding: 17px 47px 24px;
-    background: #95D828;
-    backdrop-filter: blur(6.5px);
-    border-radius: 12px;
-    transition: all 0.2s ease;
-    &:hover{
-      color: #83C814;
-      background: #E6FFBE;
-    }
-    @media (max-width: 400px) {
-      padding: 16px 33px 22px;
-    }
-  }
-  &__connected {
-    font-weight: 700;
-    padding:17px 22px 24px ;
-    font-size: 20px;
-    color: #FFFFFF;
-    background: rgba(255, 255, 255, 0.24);
-    backdrop-filter: blur(6.5px);
-    border-radius: 12px;
-    position: relative;
-
-    &::before {
-      content: "Disconnect wallet";
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.7);
-      opacity: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 12px;
-      transition: 0.1s;
-    }
-    
-    &:hover {
-      &::before {
-        opacity: 1;
-      }
-    }
-
-    @media (max-width: 1300px) {
-      margin-bottom: 180px;
-    }
-    @media (max-width: 500px) {
-      font-size: 18px;
-    }
-    @media (max-width: 455px) {
-      font-size: 16px;
-    }
-  }
-
 }
 
 //ProfileContent==============
@@ -1431,6 +1435,34 @@ $pink:#FF728E;
   width: 100%;
   margin-top: 16px;
   margin-bottom: 20px;
+  position: relative;
+  filter: grayscale(1.0);
+
+  &::before {
+    width: 100%;
+    height: 100%;
+    content: "Comming soon";
+    position: absolute;
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, .15);  
+    left: 0;
+    top: 0;
+    background: rgba(255, 255, 255, 0.5);
+    transition: all 0.1s;
+    transition: color 0.15s;
+    color: transparent;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &:hover {
+    &::before {
+      color: #595959;
+      backdrop-filter: blur(3px);
+    }
+  }
 
   &__more{
     position: absolute;
@@ -1538,4 +1570,8 @@ $pink:#FF728E;
       }
     }
   }
+}
+
+iframe {
+  display: none !important;
 }
