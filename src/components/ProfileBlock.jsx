@@ -1,15 +1,21 @@
-import {useState} from "react";
-
+import {useEffect, useState} from "react";
 import ProfileMenu from "./ProfileMenu";
+import { changeStep } from "../store/actions"
 import ProfileNotMenuChosen from "../ProfileStates/ProfileNotMenuChosen";
 import ProfilePass from "../ProfileStates/ProfilePass";
 import ProfileNftCollection from "../ProfileStates/ProfileNftCollection";
 import Achievements from "./Achievements";
 import ProfileListing from "../ProfileStates/ProfileListing";
+import { useDispatch } from "react-redux";
 
 
 const ProfileBlock = () => {
-    const [activeMenuIndex,setActiveMenuIndex] = useState(-1)
+    const dispatch = useDispatch()
+    const [activeMenuIndex, setActiveMenuIndex] = useState(-1)
+
+    useEffect(() => {
+        dispatch(changeStep(activeMenuIndex))
+    }, [activeMenuIndex, dispatch])
 
     return (
         <div className="profile">

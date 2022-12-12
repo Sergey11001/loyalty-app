@@ -3,6 +3,7 @@ import CoinbaseWalletSDK from "@coinbase/wallet-sdk";
 import storage from 'redux-persist/lib/storage';
 import { persistReducer } from 'redux-persist';
 import WalletConnect from "@walletconnect/web3-provider";
+import { changeStep } from "./actions"
 import Web3Modal from "web3modal";
 import { ethers } from 'ethers';
 
@@ -13,6 +14,10 @@ const web3State = {
   signer: null,
   signerAddr: null,
   web3Modal: null
+}
+
+const UIState = {
+  step: -1
 }
 
 const persistConfig = {
@@ -61,7 +66,7 @@ export const disconnectWallet = createAsyncThunk("web3/disconnect", async (_, { 
   await web3.web3Modal?.clearCachedProvider();
 })
 
-const web3slice = createSlice({
+export const web3slice = createSlice({
   name: "web3reducer",
   initialState: web3State,
   extraReducers: (builder) => {
@@ -97,10 +102,19 @@ const web3slice = createSlice({
   }
 })
 
-export const web3reducer = web3slice.reducer;
+export const uiSlice = createSlice({
+  name: "UI",
+  initialState: UIState,
+  extraReducers: (builder) => {
+    builder.addCase(changeStep, (state, { payload }) => {
+      state.step = payload
+    })
+  }
+})
 
-const rootReducer = combineReducers({
-  web3: web3reducer
+export const rootReducer = combineReducers({
+  web3: web3slice.reducer,
+  ui: uiSlice.reducer,
 })
 
 export const persistedReducer = persistReducer(persistConfig, rootReducer);

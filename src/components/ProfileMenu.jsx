@@ -1,8 +1,6 @@
-
 const profileMenu = [" My Pass ID", `My NFT`, "Listing NFT"]
 
 const ProfileMenu = ({activeMenuIndex, setActiveMenuIndex}) => {
-
     return (
         <div className="profile--body__menu">
             {

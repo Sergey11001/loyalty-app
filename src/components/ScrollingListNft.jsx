@@ -40,7 +40,7 @@ const ScrollingListNft = ({nftListItem, twoRows=false, delisting=false}) => {
                 <div className={twoRows ?  "collection--body__scrolling collection--body__scrolling_short" : "collection--body__scrolling"} ref={refScrollingBody}>
                     {
                         nftListItem.map((item,i)=>(
-                            <div className="collection--item" ref={i===0 ? refScrollingItem : null}>
+                            <div className="collection--item" ref={i===0 ? refScrollingItem : null} key={i}>
                                 <div className="collection--item__image">
                                     <img src={item.imgUrl} alt="" className="collection--img"/>
                                 </div>

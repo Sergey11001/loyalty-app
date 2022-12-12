@@ -14,6 +14,11 @@ $pink:#FF728E;
   }
 }
 
+.float-img {
+  position: absolute;
+  
+}
+
 .wrapper{
   font-family: 'Syne', sans-serif;
 }
@@ -32,6 +37,7 @@ $pink:#FF728E;
     max-width: 636px;
   }
 }
+
 .content--container{
   padding: 0 133px 0 137px;
   @media (max-width: 1712px) {
@@ -322,7 +328,6 @@ $pink:#FF728E;
 }
 
 //ProfileContent==============
-
 .main--block{
   display: flex;
   @media (max-width: 828px) {
@@ -913,7 +918,6 @@ $pink:#FF728E;
 }
 
 //Popup ==================
-
 .popup--congrat{
   position: fixed;
   top: 0;
