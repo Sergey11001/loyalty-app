@@ -3,31 +3,28 @@ import {useEffect, useState} from "react";
 import NftItem from "./NftItem";
 import Sort from "./Sort";
 import Search from "./Search";
-
-import first from "../assets/nft-list/1.png";
-
-const nftListItems = [
-    {urlImg:first,title:"Name Nft",price:100, id:1},
-    {urlImg:first,title:"Name Nft legendary",price:100, id:2},
-    {urlImg:first,title:"Name Nft Create",price:350, id:3},
-    {urlImg:first,title:"Name Nft",price:800, id:4},
-    {urlImg:first,title:"Name Nft rare",price:100, id:5},
-    {urlImg:first,title:"Name Nft common",price:500, id:6},
-]
+import { useSelector } from "react-redux";
 
 
 const NftList = () => {
+    const { allNfts } = useSelector((state) => state.web3);
+
     const [mainSearch, setMainSearch]=useState("")
     const [sortActiveIndex, setSortActiveIndex] = useState(0);
-    const [items, setItems] = useState(nftListItems);
+    const [nftListItems, setItems] = useState(allNfts);
 
     useEffect(() => {
         if (sortActiveIndex) {
-            setItems(items.sort((a, b) => a.price - b.price))
+            setItems(nftListItems.sort((a, b) => Number(a.price) - Number(b.price)))
         } else {
-            setItems(items.sort((a, b) => b.price - a.price))
+            setItems(nftListItems.sort((a, b) => Number(b.price) - Number(a.price)))
         }
     }, [sortActiveIndex, setItems])
+
+    useEffect(() => {
+        console.log(allNfts);
+        setItems(allNfts)
+    }, [allNfts, setItems])
 
     return (
         <div className="nft--list">
@@ -38,9 +35,9 @@ const NftList = () => {
                 </div>
                 <ul className="nft--list__list">
                     {
-                        nftListItems.filter(item => item.title.toLowerCase().includes(mainSearch.toLowerCase())).map((item,i) => (
+                        nftListItems.filter(item => item.name.toLowerCase().includes(mainSearch.toLowerCase())).map((item,i) => (
                             <li key={i} className="nft--list__item">
-                                <NftItem {...item} />
+                                <NftItem {...item} id={item.id} />
                             </li>
                         ))
                     }

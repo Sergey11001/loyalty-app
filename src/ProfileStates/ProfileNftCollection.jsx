@@ -1,6 +1,7 @@
 
 import ScrollingListNft from "../components/ScrollingListNft";
 import picture from "../assets/collection_nft/1.png"
+import { useSelector } from "react-redux";
 
 const listNft=[
     {name:"NFT Name Legend", imgUrl:picture},
@@ -15,6 +16,7 @@ const listNft=[
 ]
 
 const ProfileNftCollection = () => {
+    const { balance } = useSelector((state) => state.web3);
 
     return(
         <>
@@ -25,7 +27,7 @@ const ProfileNftCollection = () => {
                             Balance
                         </div>
                         <div className="profile--collection__top--amount">
-                            1856 sky
+                            {balance} sky
                         </div>
                     </div>
                     <ScrollingListNft nftListItem={listNft}/>

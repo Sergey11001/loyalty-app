@@ -4,7 +4,7 @@ const ProfileUnconnected = () =>{
         <div className="person__inf--unconnected">
             <span>!</span>
             <div>
-                Connect wallet and mint NFT Pass ID
+                Connect wallet and Mint NFT Pass ID
             </div>
         </div>
     )

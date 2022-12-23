@@ -1,5 +1,4 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { persistStore } from 'redux-persist'
 import { persistedReducer } from "./reducer"
 
 export const store = configureStore({
@@ -8,5 +7,3 @@ export const store = configureStore({
     serializableCheck: false
   })
 })
-
-export const persistedStore = persistStore(store)

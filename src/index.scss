@@ -63,6 +63,12 @@ $pink:#FF728E;
   }
 }
 
+.nothing {
+  font-size: 20px;
+  text-align: center;
+  width: 100%;
+}
+
 //Header===================
 .header{
   margin-bottom: 50px;
@@ -408,9 +414,14 @@ $pink:#FF728E;
             padding: 14px 10px 19px;
             margin-right: 8px;
           }
-          &:hover{
-            background: rgba(162, 162, 162, 0.34);
-            backdrop-filter: blur(213.624px);
+          &:not([disabled]) {
+            &:hover{
+              background: rgba(162, 162, 162, 0.34);
+              backdrop-filter: blur(213.624px);
+            }
+          }
+          &:disabled {
+            cursor: not-allowed;
           }
         }
         &--item_active{
@@ -487,6 +498,55 @@ $pink:#FF728E;
               font-size: 20px;
               line-height: 24px;
               color: #FFFFFF;
+              position: relative;
+              transition: all 0.1s;
+              
+              &:disabled {
+                background: #4f4f4f;
+                cursor: not-allowed;
+
+                &:hover {
+                  background: #4f4f4f99;
+                  &::before {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    opacity: 1;
+                    backdrop-filter: blur(4px);
+                  }
+                }
+
+                &::before {
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                }
+              }
+
+              &::before {
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                border-radius: 16px;
+                content: "Please connect wallet";
+                padding-bottom: 10px;
+                color: #FFF;
+                display: none;
+                opacity: 0;
+                vertical-align: center;
+                text-align: center;
+                transition: all 0.1s;
+              }
+
+              &:hover {
+                transform: scale(0.95);
+              }
+
+              &:active {
+                transform: scale(0.91);
+              }
             }
           }
 

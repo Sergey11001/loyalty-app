@@ -1,7 +1,10 @@
+import { useSelector } from "react-redux";
 import profileColor from "../assets/profile/profile_color.png";
 
 
 const ProfilePass = () => {
+    const { selfID, balance } = useSelector((state) => state.web3);
+
     return (
         <>
             <div className="profile__img-wrapper">
@@ -24,7 +27,7 @@ const ProfilePass = () => {
                                     ID
                                 </div>
                                 <div className="data--content data--content_small">
-                                    #8888
+                                    #{String(selfID).padStart(4, '0')}
                                 </div>
                             </div>
                         </div>
@@ -34,7 +37,7 @@ const ProfilePass = () => {
                                     Balance
                                 </div>
                                 <div className="data--content data--content_pink">
-                                    1856 <br/> sky
+                                    {balance} <br/> sky
                                 </div>
                             </div>
                         </div>

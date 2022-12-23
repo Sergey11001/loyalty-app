@@ -6,16 +6,23 @@ import ProfilePass from "../ProfileStates/ProfilePass";
 import ProfileNftCollection from "../ProfileStates/ProfileNftCollection";
 import Achievements from "./Achievements";
 import ProfileListing from "../ProfileStates/ProfileListing";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 
 const ProfileBlock = () => {
     const dispatch = useDispatch()
+    const { selfID } = useSelector((state) => state.web3)
     const [activeMenuIndex, setActiveMenuIndex] = useState(-1)
 
     useEffect(() => {
         dispatch(changeStep(activeMenuIndex))
     }, [activeMenuIndex, dispatch])
+
+    useEffect(() => {
+        if (!!selfID) {
+            setActiveMenuIndex(0)
+        }
+    }, [selfID])
 
     return (
         <div className="profile">

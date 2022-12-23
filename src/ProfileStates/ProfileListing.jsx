@@ -1,19 +1,9 @@
 import ScrollingListNft from "../components/ScrollingListNft";
-import picture from "../assets/collection_nft/1.png";
 import Input from "../UI/Input";
+import { useSelector } from "react-redux";
 
-const listNft=[
-    {name:"NFT Name Legend", imgUrl:picture},
-    {name:"NFT Name Legend", imgUrl:picture},
-    {name:"NFT Name Legend", imgUrl:picture},
-    {name:"NFT Name Legend", imgUrl:picture},
-    {name:"NFT Name Legend", imgUrl:picture},
-    {name:"NFT Name Legend", imgUrl:picture},
-    {name:"NFT Name Legend", imgUrl:picture},
-    {name:"NFT Name Legend", imgUrl:picture},
-    {name:"NFT Name Legend", imgUrl:picture}
-]
 const ProfileListing = () => {
+    const { balance, selfNfts } = useSelector((state) => state.web3);
     return (
         <>
             <div className="profile--collection">
@@ -23,10 +13,10 @@ const ProfileListing = () => {
                             Balance
                         </div>
                         <div className="profile--collection__top--amount">
-                            1856 sky
+                            {balance} sky
                         </div>
                     </div>
-                    <ScrollingListNft twoRows={true} nftListItem={listNft}/>
+                    <ScrollingListNft twoRows={true} nftListItem={selfNfts}/>
                     <form action="" className="sell--form">
                         <div className="sell--form__inputs">
                             <Input type={"text"} label={"Enter price"} style={{padding:"17px 21px 24px"}}/>
@@ -45,7 +35,7 @@ const ProfileListing = () => {
                     <div className="profile--collection__content--title">
                         Placed on marketplace
                     </div>
-                    <ScrollingListNft delisting={true} twoRows={true} nftListItem={listNft}></ScrollingListNft>
+                    <ScrollingListNft delisting={true} twoRows={true} nftListItem={selfNfts} />
                 </div>
             </div>
         </>
