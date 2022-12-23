@@ -30,6 +30,19 @@ const Header = () => {
                     <nav className="header--menu">
                         <ul className="header--menu__list">
                             <li className="header--menu__item">
+                            {
+                                !signerAddr ? (
+                                    <button href="#" className="header__btn mobile" onClick={() => dispatch(connectWallet())}>
+                                        Connect wallet
+                                    </button>
+                                ) : (
+                                    <div className="header__connected mobile" onClick={() => dispatch(disconnectWallet())}>
+                                        {signerAddr.slice(0, 16)}..
+                                    </div>
+                                )
+                            }
+                            </li>
+                            <li className="header--menu__item">
                                 <NavLink to="/admin" className="header--menu__link" onClick={() => setActiveBurger(false)}>
                                     Admin Panel
                                 </NavLink>
@@ -45,11 +58,11 @@ const Header = () => {
                 </div>
                 {
                     !signerAddr ? (
-                        <button href="#" className="header__btn" onClick={() => dispatch(connectWallet())}>
+                        <button href="#" className="header__btn desctop" onClick={() => dispatch(connectWallet())}>
                             Connect wallet
                         </button>
                     ) : (
-                        <div className="header__connected" onClick={() => dispatch(disconnectWallet())}>
+                        <div className="header__connected desctop" onClick={() => dispatch(disconnectWallet())}>
                             {signerAddr.slice(0, 16)}..
                         </div>
                     )

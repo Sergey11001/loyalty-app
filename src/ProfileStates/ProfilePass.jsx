@@ -16,7 +16,7 @@ const ProfilePass = () => {
                                     Name
                                 </div>
                                 <div className="data--content">
-                                    Big Boss Bos..
+                                    Admin..
                                 </div>
                             </div>
                             <div className="pass--information__data">

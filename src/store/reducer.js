@@ -2,10 +2,12 @@ import { createSlice, combineReducers, createAsyncThunk, isPending, isRejected, 
 import CoinbaseWalletSDK from "@coinbase/wallet-sdk";
 import storage from 'redux-persist/lib/storage';
 import { persistReducer } from 'redux-persist';
+import tokenABI from "../assets/abi/token.json";
+import nftABI from "../assets/abi/nft.json";
 import WalletConnect from "@walletconnect/web3-provider";
 import { changeStep } from "./actions"
 import Web3Modal from "web3modal";
-import { ethers } from 'ethers';
+import { Contract, ethers } from 'ethers';
 
 const web3State = {
   loading: false,
@@ -13,7 +15,9 @@ const web3State = {
   provider: null,
   signer: null,
   signerAddr: null,
-  web3Modal: null
+  web3Modal: null,
+  tokenContract: null,
+  nftContract: null
 }
 
 const UIState = {
@@ -52,12 +56,21 @@ export const connectWallet = createAsyncThunk("web3/connect", async () => {
   const signer = await library.getSigner();
   const signerAddr = await signer.getAddress()
 
+  const tokenContract = new Contract("0x1ae8214401d64B509dD8C6Bb77D6834359D6f323", tokenABI, signer)
+  const nftContract = new Contract("0x1ae8214401d64B509dD8C6Bb77D6834359D6f323", nftABI, signer)
+
+  await tokenContract.attach("0x1ae8214401d64B509dD8C6Bb77D6834359D6f323");
+  await nftContract.attach("0x1ae8214401d64B509dD8C6Bb77D6834359D6f323");
+
   return {
     web3Modal,
     provider,
     library,
     signer,
-    signerAddr
+    signerAddr,
+
+    tokenContract,
+    nftContract,
   }
 })
 
@@ -77,6 +90,8 @@ export const web3slice = createSlice({
       state.signer = payload.signer
       state.signerAddr = payload.signerAddr
       state.web3Modal = payload.web3Modal;
+      state.tokenContract = payload.tokenContract;
+      state.nftContract = payload.nftContract;
     })
 
     builder.addCase(disconnectWallet.fulfilled, (state) => {
@@ -85,6 +100,8 @@ export const web3slice = createSlice({
       state.signer = null
       state.signerAddr = null
       state.web3Modal = null
+      state.tokenContract = null
+      state.nftContract = null
     })
 
     builder.addMatcher(isPending, (state) => {

@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 import NftItem from "./NftItem";
 import Sort from "./Sort";
@@ -19,6 +19,15 @@ const nftListItems = [
 const NftList = () => {
     const [mainSearch, setMainSearch]=useState("")
     const [sortActiveIndex, setSortActiveIndex] = useState(0);
+    const [items, setItems] = useState(nftListItems);
+
+    useEffect(() => {
+        if (sortActiveIndex) {
+            setItems(items.sort((a, b) => a.price - b.price))
+        } else {
+            setItems(items.sort((a, b) => b.price - a.price))
+        }
+    }, [sortActiveIndex, setItems])
 
     return (
         <div className="nft--list">

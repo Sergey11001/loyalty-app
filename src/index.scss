@@ -14,9 +14,21 @@ $pink:#FF728E;
   }
 }
 
+.desctop {
+  @media (max-width: 828px) {
+    display: none !important;
+  }
+}
+
+.mobile {
+  display: none !important;
+  @media (max-width: 828px) {
+    display: block !important;
+  }
+}
+
 .float-img {
   position: absolute;
-  
 }
 
 .wrapper{
@@ -205,6 +217,10 @@ $pink:#FF728E;
       color: #83C814;
       background: #E6FFBE;
     }
+
+    &.mobile {
+      margin-left: 0;
+    }
     @media (max-width: 400px) {
       padding: 16px 33px 22px;
     }
@@ -214,7 +230,8 @@ $pink:#FF728E;
     font-weight: 700;
     padding:17px 22px 24px ;
     font-size: 20px;
-    color: #FFFFFF;
+    color: #8f8f8f;
+    border: 1px solid #8f8f8f;
     background: rgba(255, 255, 255, 0.24);
     backdrop-filter: blur(6.5px);
     border-radius: 12px;

@@ -8,7 +8,7 @@ const AdminProfile = () => {
                 <div className="admin--profile__content">
                     <img src={profileAdmin} alt="" className="admin--profile__img"/>
                     <div className="admin--profile__btn">
-                        Big Boss
+                        Admin
                     </div>
                     <div className="admin--profile__bg">
                         <img src={profileAdminBg} alt="" className="admin--profile__bg--img"/>
