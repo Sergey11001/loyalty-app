@@ -15,9 +15,9 @@ const NftList = () => {
 
     useEffect(() => {
         if (sortActiveIndex) {
-            setItems(nftListItems.sort((a, b) => Number(a.price) - Number(b.price)))
+            setItems([...nftListItems].sort((a, b) => Number(b.price) - Number(a.price)))
         } else {
-            setItems(nftListItems.sort((a, b) => Number(b.price) - Number(a.price)))
+            setItems([...nftListItems].sort((a, b) => Number(a.price) - Number(b.price)))
         }
     }, [sortActiveIndex, setItems])
 

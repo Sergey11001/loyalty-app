@@ -8,7 +8,6 @@ import passABI from "../assets/abi/passId.json"
 import WalletConnect from "@walletconnect/web3-provider";
 import { changeStep } from "./actions"
 import Web3Modal from "web3modal";
-import first from "../assets/nft-list/1.png";
 import { Contract, ethers } from 'ethers';
 import picture from "../assets/collection_nft/1.png";
 import _ from 'lodash';
@@ -113,9 +112,25 @@ export const connectWallet = createAsyncThunk("web3/connect", async () => {
       id,
       name: "#" + String(Number(id)).padStart(4, '0'),
       price,
-      uri: first,
+      uri: require("../assets/nft-list/1.png").default,
     }
   }));
+
+  let prices = [15, 30, 35, 75, 5, 2, 1.5, 12, 17, 16, 18, 3];
+  let names = ["airpods", "appleiPad", "applewatch", "appleiphone", "powerbank", "keyboard", "mouse", "certificateMassage", "certificatefitnes", "certificatecourses", "certificateSpa", "certificateSubscribe"];
+
+  let subNfts = _.times(12).map((id) => {
+    let uri = require(`../assets/nft-list/${id + 2}.jpg`).default;
+    console.log(uri);
+    return {
+      id: id + 2,
+      name: "#" + names[id],
+      price: prices[id],
+      uri,
+    }
+  })
+
+  allNfts = [...allNfts, ...subNfts]
 
   return {
     web3Modal,
@@ -178,6 +193,7 @@ export const web3slice = createSlice({
       state.tokenContract = null
       state.nftContract = null
       state.passNftContract = null
+      state.selfID = null;
     })
 
     builder.addMatcher(isPending, (state) => {

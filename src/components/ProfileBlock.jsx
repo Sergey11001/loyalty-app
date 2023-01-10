@@ -21,6 +21,8 @@ const ProfileBlock = () => {
     useEffect(() => {
         if (!!selfID) {
             setActiveMenuIndex(0)
+        } else {
+            setActiveMenuIndex(-1)
         }
     }, [selfID])
 

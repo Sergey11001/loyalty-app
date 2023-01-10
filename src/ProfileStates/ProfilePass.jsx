@@ -8,7 +8,7 @@ const ProfilePass = () => {
     return (
         <>
             <div className="profile__img-wrapper">
-                <img src={profileColor} alt="" className="profile__img"/>
+                <img src={profileColor} alt="" className="profile__img colour"/>
             </div>
             <div className="person__inf">
                 <div className="person__inf--pass">

@@ -6,9 +6,10 @@ import Loyalty from "./pages/Loyalty";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setSelfId } from "./store/reducer";
+import { Loading } from "./UI/Loading";
 
 function App() {
-  const { nftContract, signerAddr } = useSelector((state) => state.web3);
+  const { nftContract, passNftContract, signerAddr, loading } = useSelector((state) => state.web3);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -19,11 +20,19 @@ function App() {
           dispatch(setSelfId(Number(id)))
         }
       })
+
+      passNftContract.on("Mint(address,uint256)", (address, id) => {
+        console.log("Pass ID Mint: ", address, id);
+        if (signerAddr === address) {
+          dispatch(setSelfId(Number(id)))
+        }
+      })
     }
-  }, [nftContract, signerAddr, dispatch])
+  }, [nftContract, signerAddr, dispatch, passNftContract])
 
   return (
     <div className="wrapper">
+        {loading && <Loading />}
         <Header />
         <Routes>
             <Route path="/" element={<Loyalty />} />

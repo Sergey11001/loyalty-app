@@ -16,7 +16,7 @@ const Sort = ({sortActiveIndex, setSortActiveIndex}) => {
 
     useEffect(() => {
         const handleClickOutSelector = (e) => {
-            if(refSelector.current && !e.path.includes(refSelector.current)){
+            if(refSelector.current && !e.path?.includes(refSelector.current)){
                 setActiveSelector(false)
             }
         }
